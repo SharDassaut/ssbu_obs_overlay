@@ -2,6 +2,7 @@ const fs = require('node:fs/promises')
 const express = require('express')
 
 const app = express()
+let overlay_res ;
 
 app.disable('x-powered-by')
 
@@ -24,21 +25,40 @@ app.use((req, res, next)=>{
 
 ///////////////BASE API //////////////////
 
-app.get('/api-match-data', (req, res)=>{
+/*app.get('/api-match-data', (req, res)=>{
     if(match_data == null){
         res.status(500)
         res.end("")
     }
     res.json(match_data)
-})
+})*/
+
+app.get('/event', (req, res) => {
+    res.set({
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+    });
+    
+    overlay_res = res;
+
+    req.on('close', () => {
+        clients = clients.filter(c => c.id !== clientId);
+        res.end();
+    });
+});
 
 app.post('/api-match-data', (req, res)=>{
     match_data = req.body
     
     // put logic to search a the img in img folder a then move it to static
     // file and rename it (fs + path)
+    
+    overlay_res.write(`data: ${JSON.stringify(match_data)}\n\n`)
 
-    console.log(match_data)
+    console.log("Sent match data to overlay:", match_data);
+    res.end();
+
 })
 
 ///////////////////WEB SERVER///////////////////
