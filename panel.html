@@ -6,7 +6,16 @@
     <title>Control Panel</title>
 </head>
 <style>
+    :root{
+        --bg-color : #121113;
+        --txt-color : #F7F7F2;
+    }
+    body{
+        background-color: var(--bg-color);
+    }
     div{
+        color: var(--txt-color);
+        font-family: calibri;
         display: flex;
         align-items: center;
         gap: 20px;
@@ -15,53 +24,85 @@
 
     input{
         height: 25px;
-        width:100%;
+        width:80%;
+        border-width: 2px;
+        border-color: var(--txt-color);
+        background-color: var(--bg-color);
+        color: var(--txt-color);
+        border-radius: 3px;
+        font-weight: thin;
+        padding: 5px;
     }
 
     #match-data{
+        margin: 3vw;
+
         align-content: center;
         align-items: flex-start;
         flex-direction: column;
+        justify-content: center;
+        padding: 2vw;;
+
+        border-style: solid;
+        border-width: 2px;
+        border-color: var(--txt-color);
+        
+        box-shadow: 0 0 1rem var(--txt-color);
+
         width:300px;
     }
 
     button{
         align-self: flex-end;
         margin-bottom: 5%;
+        border-width: 2px;
+        border-color: var(--txt-color);
+        background-color: var(--bg-color);
+        color: var(--txt-color);
+        border-radius: 10px;
+        font-weight: thin;
+        padding: 5px 10px 5px 10px;
+    }
+
+    button:hover{
+        border-color: var(--bg-color);
+        background-color: var(--txt-color);
+        color: var(--bg-color);
     }
 
 </style>
 <body>
     <div id="match-data">
     <div>
-        <p>Right name: </p>
+        <p>Right name</p>
         <input id="rn">
     </div>
     <div>
-        <p>Left name: </p>
+        <p>Left name</p>
         <input id="ln">
     </div>
     <div>
-        <p>Fase: </p>
+        <p>Fase</p>
         <input id="fase">
     </div>
     <div>
-        <p>Score right: </p>
+        <p>Score right</p>
         <input id="rs">
     </div>
     <div>
-        <p>Score left: </p>
+        <p>Score left</p>
         <input id ="ls">
     </div>
     <div>
-        <p>Left image: </p>
+        <p>Left image</p>
         <input id ="rimg">
     </div>
     <div>
-        <p>Right image: </p>
+        <p>Right image</p>
         <input id ="limg">
     </div>
-    <button id="send">ENVIAR</button>
+    <p></p>
+    <button id="send">enviar</button>
     </div>
     <script src="panel.js"></script>
 </body>

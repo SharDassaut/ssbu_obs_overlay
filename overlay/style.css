@@ -9,6 +9,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    font-family: sans-serif;
 }
 
 section{
@@ -26,7 +27,7 @@ section{
     border-left-width: 10px ;
     
     color: #E0E0E2;
-    width:clamp(600px,50vw,90%);
+    width:clamp(600px,60vw,90%);
 
     display: flex;
     justify-content: space-around;
@@ -35,7 +36,7 @@ section{
 }
 
 div{
-    margin:0.5vw 2vw 0.85vw 2vw;
+    margin:0.5vw 2vw 1vw 2vw;
     display: flex;
     width: 100%;
 }
@@ -60,12 +61,12 @@ div{
 
 #center h1{
 
-    font-size: clamp(3rem,30vh,5rem);
+    font-size: clamp(3rem,40vh,3rem);
 
 }
 
 #center #fase{
-    font-size: 24px;
+    font-size: 42px;
 }
 
 img{
@@ -85,4 +86,39 @@ img{
 #limg{
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+
+.fade-in{
+    animation-duration: 0.65s;
+    animation-name:fade-in;
+    animation-timing-function: ease-in-out;
+}
+
+.fade-out{
+    animation-duration:  0.65s;
+    animation-name: fade-out;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in{
+    from {
+        animation-delay: 200ms;
+        translate:0 30px;
+        opacity:0 ;
+    }
+    to {
+        translate:0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out{
+    from {
+        translate:0 0;
+        opacity:1 ;
+    }
+    to {
+        translate:0 -30px;
+        opacity: 0;
+    }
 }
