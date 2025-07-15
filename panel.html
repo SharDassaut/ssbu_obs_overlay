@@ -8,41 +8,60 @@
 <style>
     div{
         display: flex;
-        align-content: center;
         align-items: center;
         gap: 20px;
+        width: 100%;
     }
 
     input{
         height: 25px;
+        width:100%;
     }
+
+    #match-data{
+        align-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        width:300px;
+    }
+
+    button{
+        align-self: flex-end;
+        margin-bottom: 5%;
+    }
+
 </style>
 <body>
+    <div id="match-data">
     <div>
         <p>Right name: </p>
-        <input id="rni">
-        <button id="rnb">ENVIAR</button>
-        <p id="text"></p>
+        <input id="rn">
     </div>
     <div>
         <p>Left name: </p>
-        <input id="lni">
-        <button id="lnb">ENVIAR</button>
+        <input id="ln">
     </div>
     <div>
         <p>Fase: </p>
-        <input id="fi">
-        <button id="fb">ENVIAR</button>
+        <input id="fase">
     </div>
     <div>
         <p>Score right: </p>
-        <input id="sri">
-        <button id="srb">ENVIAR</button>
+        <input id="rs">
     </div>
     <div>
         <p>Score left: </p>
-        <input id ="sli">
-        <button id="slb">ENVIAR</button>
+        <input id ="ls">
+    </div>
+    <div>
+        <p>Left image: </p>
+        <input id ="rimg">
+    </div>
+    <div>
+        <p>Right image: </p>
+        <input id ="limg">
+    </div>
+    <button id="send">ENVIAR</button>
     </div>
     <script src="panel.js"></script>
 </body>
