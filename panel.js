@@ -1,27 +1,26 @@
 const div = document.getElementById("match-data");
 const match_data = div.querySelectorAll("input");
 const btn = div.querySelector("button")
-
+let json = {}
 btn.addEventListener('click',async ()=>{
-    let json = {}
+    let data = {}
 
     match_data.forEach((e)=> {
         if(e.value == "") return 
+        if(json[e.id] == e.value) return
+        data[e.id] = e.value
         json[e.id] = e.value
     })
-
-    await postData(json);
+    console.log(data)
+    await postData(data);
 
 })
 
-// re-read and understand this piece of cde
+
 async function postData(json) {
   const response = await fetch('http://localhost:6355/api-match-data', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(json)
   });
-
-  const data = await response.json();
-  console.log(data);
 }
