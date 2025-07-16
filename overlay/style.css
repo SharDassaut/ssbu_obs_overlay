@@ -16,15 +16,15 @@ section{
     background-color: #001011;
     border-bottom: #E0E0E2;
     border-bottom-style: solid;
-    border-bottom-width: 10px ;
+    border-bottom-width: 5px ;
 
     border-right: #E0E0E2;
     border-right-style: solid;
-    border-right-width: 10px ;
+    border-right-width: 5px ;
 
     border-left: #E0E0E2;
     border-left-style: solid;
-    border-left-width: 10px ;
+    border-left-width: 5px ;
     
     color: #E0E0E2;
     width:clamp(600px,60vw,90%);
@@ -58,21 +58,19 @@ div{
     align-items: center;
 }
 
+
+
 h1{
-    font-size: 30px;
-}
-
-#center h1{
-
-    font-size: clamp(3rem,40vh,3rem);
-
-}
-
-#center #fase{
     font-size: 42px;
 }
 
+#fase{
+    font-size: min(5vw,25px);
+}
+
+
 img{
+    background-color: #001011;
     border-color: #E0E0E2;
     border-style: solid;
 }
@@ -91,6 +89,18 @@ img{
     transform: scaleX(-1);
 }
 
+.fade-in-mv{
+    animation-duration: 0.65s;
+    animation-name:fade-in-mv;
+    animation-timing-function: ease-in-out;
+}
+
+.fade-out-mv{
+    animation-duration:  0.65s;
+    animation-name: fade-out-mv;
+    animation-timing-function: ease-in-out;
+}
+
 .fade-in{
     animation-duration: 0.65s;
     animation-name:fade-in;
@@ -102,8 +112,25 @@ img{
     animation-name: fade-out;
     animation-timing-function: ease-in-out;
 }
-
 @keyframes fade-in{
+    from {
+        animation-delay: 1000ms;
+        opacity:0 ;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out{
+    from {
+        opacity:1 ;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes fade-in-mv{
     from {
         animation-delay: 200ms;
         translate:0 30px;
@@ -115,7 +142,7 @@ img{
     }
 }
 
-@keyframes fade-out{
+@keyframes fade-out-mv{
     from {
         translate:0 0;
         opacity:1 ;

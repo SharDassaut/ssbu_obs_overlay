@@ -69,6 +69,31 @@
         background-color: var(--txt-color);
         color: var(--bg-color);
     }
+    select {
+    height: 35px;
+    width: 80%;
+    border-width: 2px;
+    border-color: var(--txt-color);
+    background-color: var(--bg-color);
+    color: var(--txt-color);
+    border-radius: 3px;
+    font-family: Calibri, sans-serif;
+    padding: 5px;
+    font-size: 1em;
+}
+
+    /* Style the dropdown arrow in most browsers */
+    select:focus {
+        outline: none;
+        box-shadow: 0 0 5px var(--txt-color);
+    }
+
+    option {
+        background-color: var(--bg-color);
+        color: var(--txt-color);
+        font-family: Calibri, sans-serif;
+    }
+
 
 </style>
 <body>
@@ -83,7 +108,15 @@
     </div>
     <div>
         <p>Fase</p>
-        <input id="fase">
+        <select name="fase" id="fase">
+            <option value ="">default</option>
+            <option value="FINAL">FINAL</option>
+            <option value="SEMI">SEMI</option>
+            <option value="CUARTO">CUARTO</option>
+            <option value="1/8">1/8</option>
+            <option value="1/16">1/16</option>
+            <option value="1/16">1/32</option>
+        </select>
     </div>
     <div>
         <p>Score right</p>
@@ -95,11 +128,21 @@
     </div>
     <div>
         <p>Left image</p>
-        <input id ="rimg">
+        <select name="chr" id="limg">
+            <option value="default">default</option>
+            <option value="captain_falcon">captain falcon</option>
+            <option value="dark_samus">dark samus</option>
+            <option value="daisy">daisy</option>
+        </select>
     </div>
     <div>
         <p>Right image</p>
-        <input id ="limg">
+        <select name="chr" id="rimg">
+            <option value="default">default</option>
+            <option value="captain_falcon">captain falcon</option>
+            <option value="dark_samus">dark samus</option>
+            <option value="daisy">daisy</option>
+        </select>
     </div>
     <button id="send">enviar</button>
     </div>

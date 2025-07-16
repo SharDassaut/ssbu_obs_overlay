@@ -1,5 +1,6 @@
 const div = document.getElementById("match-data");
 const match_data = div.querySelectorAll("input");
+const chr_img = div.querySelectorAll("select")
 const btn = div.querySelector("button")
 
 btn.addEventListener('click',async ()=>{
@@ -9,10 +10,15 @@ btn.addEventListener('click',async ()=>{
         if(e.value == "") return 
         data[e.id] = e.value
     })
+
+    chr_img.forEach((e)=>{
+      data[e.id] = e.value
+    })
     console.log(data)
     await postData(data);
 
 })
+
 
 
 async function postData(json) {

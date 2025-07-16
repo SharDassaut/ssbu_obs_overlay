@@ -1,4 +1,5 @@
 const fs = require('node:fs/promises')
+const path = require("node:path")
 const express = require('express')
 
 const app = express()
@@ -23,6 +24,11 @@ app.use((req, res, next)=>{
     next();
 });
 
+app.use(/\.png$/,(req, res ,next)=>{
+    res.header('Cache-Control','no-store')
+    next()
+})
+
 ///////////////BASE API //////////////////
 
 app.get('/event', (req, res) => {
@@ -45,43 +51,51 @@ app.get('/api-match-data',(req, res)=>{
     res.json(JSON.stringify(match_data))
 })
 
-app.post('/api-match-data', (req, res)=>{
+app.post('/api-match-data', async (req, res)=>{
     let data = req.body
+    const fileCopyPromises = []
+
     for(const x in data){
         if(match_data[x] == data[x]){ 
             delete data[x]
             continue
         }
         match_data[x] = data[x]
+        if(x != "limg" && x != "rimg" ) continue
+        let nme = data[x] +".png"
+        const oldpath = path.resolve('chr_pp',nme)
+        const newpath = path.resolve('img',x+'.png')
+        fileCopyPromises.push(fs.copyFile(oldpath, newpath));
     }
     
-    // put logic to search a the img in img folder a then move it to static
-    // file and rename it (fs + path)
+    try{
+        await Promise.all(fileCopyPromises);
+    }
+    catch(err){
+         res.status(500).json({ error: "File copy failed", details: err.message})
+    }
 
     clients.forEach( x =>{
         x.res.write(`data: ${JSON.stringify(data)}\n\n`)
     })
-    
-
-    console.log("Sent match data to overlay:", match_data);
+    console.log("Sent match data to overlay:", data);
     res.end();
 
 })
 
 ///////////////////WEB SERVER///////////////////
 
-app.get('/dr.png', (req,res)=>{
-     fs.readFile('img/dr.png').then((file) =>{
+app.get('/rimg.png', (req,res)=>{
+    res.header()
+    fs.readFile('img/rimg.png').then((file) =>{
             res.end(file)
-            }
-        )
+        })
 })
 
-app.get('/iz.png', (req,res)=>{
-     fs.readFile('img/iz.png').then((file) =>{
+app.get('/limg.png', (req,res)=>{
+     fs.readFile('img/limg.png').then((file) =>{
             res.end(file)
-            }
-        )
+    })
 })
 
 app.use((req,res) => {
