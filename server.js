@@ -41,6 +41,10 @@ app.get('/event', (req, res) => {
     });
 });
 
+app.get('/api-match-data',(req, res)=>{
+    res.json(JSON.stringify(match_data))
+})
+
 app.post('/api-match-data', (req, res)=>{
     match_data = req.body
     
