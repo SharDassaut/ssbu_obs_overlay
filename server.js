@@ -7,7 +7,7 @@ let clients = []
 app.disable('x-powered-by')
 
 const PORT = process.argv[2] ?? 6355
-let match_data = null
+let match_data = {}
 
 //// MIDDLEWARE ////
 
@@ -46,12 +46,20 @@ app.get('/api-match-data',(req, res)=>{
 })
 
 app.post('/api-match-data', (req, res)=>{
-    match_data = req.body
+    let data = req.body
+    for(const x in data){
+        if(match_data[x] == data[x]){ 
+            delete data[x]
+            continue
+        }
+        match_data[x] = data[x]
+    }
     
     // put logic to search a the img in img folder a then move it to static
     // file and rename it (fs + path)
+
     clients.forEach( x =>{
-        x.res.write(`data: ${JSON.stringify(match_data)}\n\n`)
+        x.res.write(`data: ${JSON.stringify(data)}\n\n`)
     })
     
 

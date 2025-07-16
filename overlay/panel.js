@@ -1,15 +1,13 @@
 const div = document.getElementById("match-data");
 const match_data = div.querySelectorAll("input");
 const btn = div.querySelector("button")
-let json = {}
+
 btn.addEventListener('click',async ()=>{
     let data = {}
 
     match_data.forEach((e)=> {
         if(e.value == "") return 
-        if(json[e.id] == e.value) return
         data[e.id] = e.value
-        json[e.id] = e.value
     })
     console.log(data)
     await postData(data);
