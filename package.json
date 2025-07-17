@@ -1,0 +1,15 @@
+{
+  "name": "smashbros_direct_manager",
+  "version": "1.0.0",
+  "description": "small server to manage the obs overlay for smash bros stream",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch server.js"
+  },
+  "author": "SharDassaut",
+  "license": "MIT",
+  "dependencies": {
+    "express": "5.1.0"
+  }
+}

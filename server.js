@@ -85,9 +85,15 @@ app.post('/api-match-data', async (req, res)=>{
 
 ///////////////////WEB SERVER///////////////////
 
+app.get('panel', (req,res)=>{
+    fs.readFile('overlay/panel.html').then((file) =>{
+            res.end(file)
+        })
+})
+
 app.get('/rimg.png', (req,res)=>{
-    res.header()
     fs.readFile('img/rimg.png').then((file) =>{
+            res.set("Content-Type","text/html")
             res.end(file)
         })
 })
