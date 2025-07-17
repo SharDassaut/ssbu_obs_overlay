@@ -22,7 +22,7 @@ btn.addEventListener('click',async ()=>{
 
 
 async function postData(json) {
-  const response = await fetch('http://localhost:6355/api-match-data', {
+  const response = await fetch('/api-match-data', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(json)

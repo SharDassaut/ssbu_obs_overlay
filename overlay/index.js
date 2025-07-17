@@ -1,5 +1,4 @@
-const evtSource = new EventSource("//localhost:6355/event",{})
-
+const evtSource = new EventSource("/event")
 function remplace_data(data){
     for(const x in data){
         const e = document.getElementById(x)
