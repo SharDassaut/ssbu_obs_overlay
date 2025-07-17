@@ -30,8 +30,8 @@ A browser-based overlay for OBS that displays Super Smash Bros. Ultimate match i
 node server.js
 ```
 2. Access the components
-Overlay http://localhost:6355/
-Panel http://localhost:6355/panel
+- Overlay http://localhost:6355/
+- Panel http://localhost:6355/panel
 
 ## Usage
 1. Add the overlay URL as a browser source in OBS
